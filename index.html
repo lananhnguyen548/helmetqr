@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <link rel="icon" href="HELMET.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tạo Mã QR Cá Nhân</title>
@@ -13,7 +12,7 @@
     <form id="bio-form">
       <input type="text" id="name" placeholder="Họ và Tên" required><br>
       <input type="text" id="dob" placeholder="Ngày sinh" required><br>
-      <input type="text" id="issue" placeholder="Bệnh sử" required><br>
+      <input id="medical-history" placeholder="Nhập bệnh sử" required><br>
       <input type="text" id="address" placeholder="Địa chỉ thường trú" required><br>
       <button type="submit">Tạo Mã QR</button>
     </form>
@@ -26,50 +25,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
-<script>
-  document.getElementById('bio-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Lấy thông tin từ form
-    const name = document.getElementById('name').value;
-    const dob = document.getElementById('dob').value;
-    const address = document.getElementById('address').value;
-
-    // Tạo nội dung bio
-    const bioContent = `Họ và Tên: ${name}\nNgày sinh: ${dob}\nĐịa chỉ: ${address}`;
-
-    // Tạo mã QR từ bioContent
-    const qrCodeDiv = document.getElementById('qr-code');
-    qrCodeDiv.innerHTML = ""; // Xóa mã QR cũ
-
-    QRCode.toCanvas(document.createElement('canvas'), bioContent, { width: 300 }, (error, canvas) => {
-      if (error) {
-        console.error(error);
-      } else {
-        qrCodeDiv.appendChild(canvas);
-
-        // Hiển thị nút tải mã QR
-        const downloadBtn = document.getElementById('download-btn');
-        downloadBtn.style.display = 'inline-block';
-        downloadBtn.onclick = () => {
-          const dataUrl = canvas.toDataURL();
-          const blob = dataURLtoBlob(dataUrl);
-          saveAs(blob, 'qr-code.png');
-        };
-      }
-    });
-  });
-
-  // Hàm chuyển đổi từ DataURL sang Blob
-  function dataURLtoBlob(dataUrl) {
-    const arr = dataUrl.split(','), mime = arr[0].match(/:(.*?);/)[1];
-    const bstr = atob(arr[1]);
-    let n = bstr.length;
-    const u8arr = new Uint8Array(n);
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new Blob([u8arr], { type: mime });
-  }
-</script>
