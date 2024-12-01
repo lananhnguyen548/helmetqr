@@ -1,6 +1,6 @@
 /* Thiết lập chung */
 * {
-  margin: 100;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -11,20 +11,22 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh; /* Chiều cao toàn màn hình */
+  height: 90vh; /* Chiều cao toàn màn hình */
   display: flex;
   justify-content: center;
   align-items: center;
   color: #333; /* Màu chữ */
+  padding: 0px; /* Thêm padding để tránh nội dung chạm sát viền */
+  position: static
 }
 
 /* Header tiêu đề */
 .header {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
 }
 
 .header h1 {
@@ -35,29 +37,37 @@ body {
 /* Container form */
 .container {
   background: rgba(255, 255, 255, 0.9);
-  padding: 15px;
-  border-radius: 30px;
+  padding: 15px; /* Giảm padding */
+  border-radius: 30px; /* Giảm bo góc */
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  width: 100%; /* Đảm bảo responsive */
+  max-width: 600px; /* Giảm kích thước tối đa */
+  width: 90%; /* Đảm bảo kích thước linh hoạt */
+  text-align: center;
+  margin: auto; /* Căn giữa khung */
+  margin-top: 90px; /* Thêm khoảng cách từ trên */
+  top: 200%; /* Đặt khung vào giữa theo chiều dọc */
+  left: 50%; /* Đặt khung vào giữa theo chiều ngang */
   text-align: center;
 }
+
 
 /* Tiêu đề nhỏ trong container */
 .container h2 {
   font-size: 1.8em;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 /* Input và nút bấm */
 input, button {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
+  width: 90%;
+  max-width: 500px; /* Giới hạn chiều rộng tối đa */
+  padding: 12px;
+  margin: 0px auto; /* Giảm khoảng cách giữa các ô */
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 0px;
   font-size: 16px;
+  display: block;
 }
 
 button {
@@ -73,16 +83,16 @@ button:hover {
 
 /* Kích thước mã QR */
 .qr-container canvas {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   margin: auto;
   display: block;
 }
 
 /* Giới hạn kích thước của mã QR */
 #qr-code canvas {
-  max-width: 100px; /* Đặt chiều rộng tối đa */
-  max-height: 100px; /* Đặt chiều cao tối đa */
+  max-width: 120px; /* Đặt chiều rộng tối đa */
+  max-height: 120px; /* Đặt chiều cao tối đa */
   width: 70%; /* Đảm bảo mã QR co giãn theo kích thước container */
   height: auto; /* Tự động điều chỉnh chiều cao để giữ tỷ lệ */
   margin: auto; /* Căn giữa mã QR */
@@ -92,8 +102,22 @@ button:hover {
 #download-btn {
   background-color: #007bff;
   color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 200px;
 }
 
 #download-btn:hover {
   background-color: #0056b3;
 }
+
+  /* Điều chỉnh kích thước container cho thiết bị nhỏ */
+  .container {
+    width: 90%; /* Đảm bảo container không quá rộng */
+    max-width: 400px; /* Giới hạn kích thước tối đa */
+  }
